@@ -124,7 +124,9 @@ int Engine::Run() {
       SwapBuffers(hDC);
     }
     else {
+        ShowCursor(TRUE);
         Sleep(100);
+        ShowCursor(FALSE);
     }
   }
 
