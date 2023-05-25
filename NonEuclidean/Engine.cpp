@@ -83,10 +83,9 @@ int Engine::Run() {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
       }
-    } else {
+    } else if (GetForegroundWindow() == hWnd) {
       //Confine the cursor
       ConfineCursor();
-
       if (input.key_press['1']) {
         LoadScene(0);
       } else if (input.key_press['2']) {
@@ -123,6 +122,9 @@ int Engine::Run() {
       GH_REC_LEVEL = GH_MAX_RECURSION;
       Render(main_cam, 0, nullptr);
       SwapBuffers(hDC);
+    }
+    else {
+        Sleep(100);
     }
   }
 
